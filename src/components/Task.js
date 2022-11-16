@@ -1,16 +1,21 @@
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes } from "react-icons/fa";
 
-const task = ({ task, onDelete, onToggle}) => {
+const task = ({ task, onDelete, onToggle }) => {
   return (
-    <div className= {`task ${task.reminder ? 'reminder' : ''}`} onDoubleClick={() => onToggle(task.id)}>
-        <h3>{task.text} 
-        <FaTimes style={{color: 'red', cursor: 'pointer'}}
-        onClick={() => onDelete(task.id)}
+    <div
+      className={`task ${task.reminder ? "reminder" : ""}`}
+      onDoubleClick={() => onToggle(task.id)}
+    >
+      <h3>
+        {task.text}
+        <FaTimes
+          style={{ color: "red", cursor: "pointer" }}
+          onClick={() => onDelete(task.id)}
         />
-        </h3>
-        <p>{task.day}</p>
+      </h3>
+      <p>{task.day}</p> 
     </div>
-  )
-}
+  );
+};
 
-export default task
+export default task;
