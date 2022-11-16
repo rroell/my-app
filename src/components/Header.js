@@ -1,14 +1,15 @@
 import Button from "./Button";
 
-const Header = ({ title }) => {
-  // event when you click the button
-  const onClick = () => {
-    console.log("Click");
-  };
+const Header = ({ title, onAdd, showAdd }) => {
   return (
     <header className="header">
       <h1>{title}</h1>
-      <Button color="green" text="Add" onClick={onClick} />
+      {/* if addTasks is shown, change button text */}
+      <Button
+        color={showAdd ? "red" : "green"}
+        text={showAdd ? "Close" : "Add"}
+        onClick={onAdd}
+      />
     </header>
   );
 };
@@ -16,10 +17,5 @@ const Header = ({ title }) => {
 Header.defaultProps = {
   title: "Default title",
 };
-
-// const headingStyle = {
-//     color: 'red',
-//     backgroundColor: 'black'
-// }
 
 export default Header;

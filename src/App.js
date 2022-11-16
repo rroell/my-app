@@ -3,7 +3,8 @@ import Tasks from "./components/Tasks";
 import { useState } from "react";
 import AddTask from "./components/AddTask";
 
-function App() {
+const App = () => {
+  const [showAddTask, setShowAddTask] = useState(false);
   // default value of 'tasks'
   const [tasks, setTasks] = useState([
     {
@@ -52,8 +53,12 @@ function App() {
 
   return (
     <div className="Container">
-      <Header title="Task Tracker" />
-      <AddTask onAdd={addTask} />
+      <Header
+        title="Task Tracker"
+        onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+      />
+      {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? ( // if no task: show text No tasks to show
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
@@ -61,6 +66,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;
